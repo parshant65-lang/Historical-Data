@@ -1,6 +1,6 @@
 # Historical Financial Market Data Archive
 
-Universal repository for cleaned, standardized, and validated historical market data for Indian Equities (Nifty 100), Indices, and Global Crypto assets.
+Universal repository for cleaned, standardized, and validated historical market data for Indian Equities (Top 400 NSE Companies), Indices, and Global Crypto assets.
 
 ## Repository Architecture & Hierarchy
 
@@ -8,23 +8,20 @@ All assets are strictly organized into dedicated sub-folders by **Asset/Ticker**
 
 ```text
 Historical-Data/
-├── BTCUSDT/                # Bitcoin (Binance Spot)
-│   └── 1m/                 # 1-Minute Historical Kline Data (2017 - 2026)
+├── BTCUSDT/                # Bitcoin (Binance Spot) 2017 - 2026
+│   └── 1m/                 # 1-Minute Historical Kline Data
 │       ├── 2017/ ... 2026/
 │
 ├── RELIANCE/               # Reliance Industries Ltd (NSE)
 │   └── 1m/                 # 1-Minute Historical Kline Data
 │       └── 2026/
-│           ├── 09/ ➡️ RELIANCE_1m_2026-09.csv
-│           └── 10/ ➡️ RELIANCE_1m_2026-10.csv
+│           ├── 09/ ➡️ RELIANCE_1m_2026-09-30.csv
+│           └── 10/ ➡️ RELIANCE_1m_2026-10-01.csv, ...
 │
 ├── TCS/                    # Tata Consultancy Services (NSE)
 │   └── 1m/                 # 1-Minute Historical Kline Data
-│       └── 2026/
-│           ├── 09/ ➡️ TCS_1m_2026-09.csv
-│           └── 10/ ➡️ TCS_1m_2026-10.csv
 │
-└── [Top 100 NSE Companies] # Complete Nifty 100 Constituent Coverage
+└── [Top 400 NSE Companies] # Complete Coverage of Top 400 Indian Companies (Nifty 500)
 ```
 
 ## Standard Data Schema (1-Minute Klines)
@@ -36,5 +33,6 @@ Historical-Data/
 - `close`: Close price
 - `volume`: Traded volume
 
-## Top 100 Indian Companies Covered (Nifty 100 Index):
-ABB, ADANIENSOL, ADANIENT, ADANIGREEN, ADANIPORTS, ADANIPOWER, AMBUJACEM, APOLLOHOSP, ASIANPAINT, DMART, AXISBANK, BSE, BAJAJ-AUTO, BAJFINANCE, BAJAJFINSV, BAJAJHLDNG, BANKBARODA, BEL, BPCL, BHARTIARTL, BOSCHLTD, BRITANNIA, CGPOWER, CANBK, CHOLAFIN, CIPLA, COALINDIA, CUMMINSIND, DLF, DIVISLAB, DRREDDY, EICHERMOT, ETERNAL, GAIL, GODREJCP, GRASIM, HCLTECH, HDFCAMC, HDFCBANK, HDFCLIFE, HINDALCO, HAL, HINDUNILVR, HINDZINC, POWERINDIA, HYUNDAI, ICICIBANK, ITC, IOC, IRFC, INFY, INDIGO, JSWSTEEL, JINDALSTEL, JIOFIN, KOTAKBANK, LTM, LT, M&M, MARUTI, MAXHEALTH, MAZDOCK, MUTHOOTFIN, NTPC, NESTLEIND, ONGC, PIDILITIND, POLYCAB, PFC, POWERGRID, PNB, RELIANCE, SBILIFE, MOTHERSON, SHRIRAMFIN, ENRIN, SIEMENS, SOLARINDS, SBIN, SUNPHARMA, TVSMOTOR, TATACAP, TCS, TATACONSUM, TMCV, TMPV, TATAPOWER, TATASTEEL, TECHM, TITAN, TORNTPHARM, TRENT, ULTRACEMCO, UNIONBANK, VBL, VAML, VEDL, IDEA, WIPRO, ZYDUSLIFE.
+## Asset Coverage:
+- **Crypto:** `BTCUSDT` (1m full historical archive 2017–2026, 4.8M+ candles)
+- **Equities:** **Top 400 Indian Listed Companies** on National Stock Exchange (NSE) organized strictly into date-wise daily 1-minute CSV files.

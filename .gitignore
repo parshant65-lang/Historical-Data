@@ -3,5 +3,7 @@ push_remaining_years.py
 push_all.py
 fetch_batch.py
 split_all_companies_by_date.py
+fetch_300_batch.py
+companies_101_400.json
 *.log
 __pycache__/
