@@ -10,9 +10,17 @@ All assets are strictly organized into dedicated sub-folders by **Asset/Ticker**
 Historical-Data/
 ├── BTCUSDT/                # Bitcoin (Binance Spot)
 │   └── 1m/                 # 1-Minute Historical Kline Data (2017 - Present)
-│       ├── BTCUSDT_1m_2017.csv.gz
-│       ├── BTCUSDT_1m_2018.csv.gz
-│       └── ...
+│       ├── 2017/
+│       │   ├── 08/
+│       │   │   └── BTCUSDT_1m_2017-08.csv
+│       │   └── ...
+│       ├── 2024/
+│       │   ├── 01/
+│       │   │   └── BTCUSDT_1m_2024-01.csv
+│       │   └── ...
+│       └── 2026/
+│           ├── 10/
+│           │   └── BTCUSDT_1m_2026-10.csv
 ├── NIFTY50/                # Nifty 50 Index
 │   └── 1d/                 # Daily Historical Bars
 └── TCS/                    # Tata Consultancy Services
