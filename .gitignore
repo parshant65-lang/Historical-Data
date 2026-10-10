@@ -7,5 +7,9 @@ fetch_300_batch.py
 companies_101_400.json
 fetch_worker.py
 universe_3600.json
+download_to_target_4000.py
+remaining_candidates.json
 *.log
 __pycache__/
+download_final_batch.py
+*.json
