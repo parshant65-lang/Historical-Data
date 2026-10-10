@@ -13,3 +13,5 @@ remaining_candidates.json
 __pycache__/
 download_final_batch.py
 *.json
+download_10_cryptos.py
+push_crypto_batches.py

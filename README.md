@@ -1,6 +1,6 @@
-# Global 1-Minute Historical Market Data Archive (4,000 Unique Equities & Crypto)
+# Global 1-Minute Historical Market Data Archive (4,000 Equities & 11 Major Cryptos)
 
-An institutional-grade, open-source archive of cleaned, standardized, and validated **1-minute intraday historical kline data** covering **Bitcoin (`BTCUSDT`)** and **4,000 Unique Publicly Traded Companies** (Indian NSE equities and US NYSE/NASDAQ equities).
+An institutional-grade, open-source archive of cleaned, standardized, and validated **1-minute intraday historical kline data** covering **11 Major Cryptocurrencies (`BTC`, `ETH`, `BNB`, `SOL`, `XRP`, `ADA`, `DOGE`, `AVAX`, `DOT`, `LINK`, `NEAR`)** and **4,000 Unique Publicly Traded Companies** (Indian NSE equities and US NYSE/NASDAQ equities).
 
 ---
 
@@ -20,59 +20,39 @@ To prevent GitHub Web UI directory truncation (which limits views to 1,000 items
 
 ```text
 Historical-Data/
-├── crypto/                                 # 24/7 Digital Asset Pairs
-│   └── BTCUSDT/
-│       └── 1m/                             # August 2017 to Present (4.8M+ candles)
-│           ├── 2017/ ... 2026/
-│               └── 10/
-│                   └── BTCUSDT_1m_2026-10.csv
+├── crypto/                                 # 24/7 Digital Asset Pairs (11 Major Cryptos, 44M+ candles)
+│   ├── BTCUSDT/1m/...                      # August 2017 to Present (111 months)
+│   ├── ETHUSDT/1m/...                      # August 2017 to Present (111 months)
+│   ├── BNBUSDT/1m/...                      # November 2017 to Present (108 months)
+│   ├── SOLUSDT/1m/...                      # August 2020 to Present (75 months)
+│   ├── XRPUSDT/1m/...                      # May 2018 to Present (102 months)
+│   ├── ADAUSDT/1m/...                      # April 2018 to Present (103 months)
+│   ├── DOGEUSDT/1m/...                     # July 2019 to Present (88 months)
+│   ├── AVAXUSDT/1m/...                     # September 2020 to Present (74 months)
+│   ├── DOTUSDT/1m/...                      # August 2020 to Present (75 months)
+│   ├── LINKUSDT/1m/...                     # January 2019 to Present (94 months)
+│   └── NEARUSDT/1m/...                     # October 2020 to Present (73 months)
 │
 ├── india/                                  # Indian Equities (NSE) - 1,418 Companies
-│   ├── 0-9/                                # Numerically prefixed symbols
-│   │   ├── 20MICRONS/1m/...
-│   │   └── 3MINDIA/1m/...
-│   ├── A/                                  # Tickers starting with A
-│   │   ├── A2ZINFRA/1m/...
-│   │   └── ADANIENT/1m/...
-│   ├── H/
-│   │   ├── HCLTECH/1m/...
-│   │   ├── HDFCBANK/1m/...
-│   │   └── HINDUNILVR/1m/...
-│   ├── R/
-│   │   └── RELIANCE/
-│   │       └── 1m/
-│   │           ├── README.md
-│   │           └── 2026/10/
-│   │               ├── RELIANCE_1m_2026-10-01.csv
-│   │               └── RELIANCE_1m_2026-10-09.csv
-│   └── Z/
-│       └── ZOMATO/1m/...
+│   ├── 0-9/                                # Numerically prefixed symbols (20MICRONS, 3MINDIA, etc.)
+│   ├── A/                                  # Tickers starting with A (A2ZINFRA, ADANIENT, etc.)
+│   ├── H/                                  # (HCLTECH, HDFCBANK, HINDUNILVR, etc.)
+│   ├── R/                                  # (RELIANCE, etc.)
+│   └── Z/                                  # (ZOMATO, etc.)
 │
 └── usa/                                    # US Equities (NYSE / NASDAQ) - 2,582 Companies
-    ├── A/
-    │   ├── A/1m/...
-    │   ├── AAPL/
-    │   │   └── 1m/
-    │   │       ├── README.md
-    │   │       └── 2026/10/
-    │   │           └── AAPL_1m_2026-10-09.csv
-    │   └── AMZN/1m/...
-    ├── M/
-    │   └── MSFT/1m/...
-    ├── N/
-    │   └── NVDA/1m/...
-    ├── T/
-    │   └── TSLA/1m/...
-    └── Z/
-        └── ZTS/1m/...
+    ├── A/                                  # (AAPL, AMZN, etc.)
+    ├── M/                                  # (MSFT, etc.)
+    ├── N/                                  # (NVDA, etc.)
+    ├── T/                                    # (TSLA, etc.)
+    └── Z/                                  # (ZTS, etc.)
 ```
 
 ---
 
 ## 📑 Data Schema & Specifications
 
-Every single CSV file adheres to a uniform column schema with zero missing values or headers mismatch:
-
+### 1. Equities Schema (India & USA):
 | Column Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
 | `timestamp` | `int64` | Candle open time in Unix milliseconds (UTC) | `1791552600000` |
@@ -82,6 +62,9 @@ Every single CSV file adheres to a uniform column schema with zero missing value
 | `low` | `float64` | Lowest price reached during the 1-minute window | `331.28` |
 | `close` | `float64` | Closing price of the 1-minute candle | `332.74` |
 | `volume` | `float64` | Cumulative volume traded in the 1-minute candle | `3416928` |
+
+### 2. Crypto Schema (Binance Spot Klines):
+`timestamp, datetime_utc, open, high, low, close, volume, quote_volume, trade_count, taker_buy_volume, taker_buy_quote_volume`
 
 ---
 
@@ -102,10 +85,10 @@ url_usa = "https://raw.githubusercontent.com/parshant65-lang/Historical-Data/mai
 df_aapl = pd.read_csv(url_usa)
 print(df_aapl.head())
 
-# 3. Load Bitcoin Spot Kline (e.g., October 2026)
-url_crypto = "https://raw.githubusercontent.com/parshant65-lang/Historical-Data/main/crypto/BTCUSDT/1m/2026/10/BTCUSDT_1m_2026-10.csv"
-df_btc = pd.read_csv(url_crypto)
-print(df_btc.head())
+# 3. Load Crypto Spot Kline (e.g., Ethereum for September 2026)
+url_crypto = "https://raw.githubusercontent.com/parshant65-lang/Historical-Data/main/crypto/ETHUSDT/1m/2026/09/ETHUSDT_1m_2026-09.csv"
+df_eth = pd.read_csv(url_crypto)
+print(df_eth.head())
 ```
 
 ---
@@ -114,8 +97,8 @@ print(df_btc.head())
 
 ### 1. Rolling Ingestion Pipeline
 To keep this repository perpetually updated as time moves forward:
-* Every Friday post-market (or weekend), an automated ingestion script pulls the latest 7-day rolling window for all constituents.
-* New trading days are sliced by date and saved into their respective `<country>/<bucket>/<symbol>/1m/<YYYY>/<MM>/<symbol>_1m_<DATE>.csv` paths.
+* Every Friday post-market (or weekend), an automated ingestion script pulls the latest 7-day rolling window for equities and weekly klines for crypto.
+* New trading sessions are saved directly into their respective `<country>/<bucket>/<symbol>/1m/<YYYY>/<MM>/` paths.
 
 ### 2. Zero-Duplicate Guarantee (Timestamp Deduplication)
 When overlapping dates or partial sessions are ingested:
@@ -125,12 +108,11 @@ combined_df = pd.concat([existing_df, new_df], ignore_index=True)
 combined_df.drop_duplicates(subset=["timestamp"], keep="last", inplace=True)
 combined_df.sort_values(by="timestamp", inplace=True)
 ```
-Existing completed historical days are never overwritten or corrupted; only newly closed candles are appended.
 
 ---
 
-## 🌐 Coverage Overview (4,000 Unique Assets)
+## 🌐 Coverage Overview
 
-1. **Crypto:** `BTCUSDT` — Full historical archive (Aug 2017 to Present, 4.8M+ 1-minute candles).
-2. **Indian Equities (NSE):** 1,418 active companies across Large, Mid, and Small Cap segments in `india/<0-9|A-Z>/<SYMBOL>/`.
-3. **Global / US Equities:** 2,582 S&P 500, NASDAQ, and NYSE companies in `usa/<A-Z>/<SYMBOL>/`.
+1. **Crypto (11 Assets, 44M+ candles):** `BTCUSDT`, `ETHUSDT`, `BNBUSDT`, `SOLUSDT`, `XRPUSDT`, `ADAUSDT`, `DOGEUSDT`, `AVAXUSDT`, `DOTUSDT`, `LINKUSDT`, `NEARUSDT`.
+2. **Indian Equities (NSE - 1,418 Assets):** Complete listed universe across Large, Mid, and Small Cap segments.
+3. **US Equities (NYSE / NASDAQ - 2,582 Assets):** S&P 500, NASDAQ-100, and growth leaders.
