@@ -2,5 +2,6 @@ push_all_months.py
 push_remaining_years.py
 push_all.py
 fetch_batch.py
+split_all_companies_by_date.py
 *.log
 __pycache__/
