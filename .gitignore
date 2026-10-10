@@ -5,5 +5,7 @@ fetch_batch.py
 split_all_companies_by_date.py
 fetch_300_batch.py
 companies_101_400.json
+fetch_worker.py
+universe_3600.json
 *.log
 __pycache__/
